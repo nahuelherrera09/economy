@@ -9,7 +9,49 @@ document.addEventListener('DOMContentLoaded', function(){
     const tableLujos = document.getElementById('tableLujos');
     const alert = document.getElementById('alert');
     const form = document.getElementsByClassName('form')
-    const removeBtn = document.getElementsByClassName('removeBtn')
+    const removeBtn = document.getElementsByClassName('removeBtn');
+
+
+    class DineroGastado {
+        constructor (gasto, descripcion){
+             this.gasto = gasto;
+             this.descripcion = descripcion;
+                   
+        }      
+    }
+
+    class GastadoFijos extends DineroGastado{
+           constructor (gasto, descripcion){
+               super(gasto, descripcion);
+               this.gasto = gasto;
+               this.descripcion = descripcion;
+           } 
+    }
+
+    class GastadoComida extends DineroGastado{
+        constructor (gasto, descripcion){
+            super(gasto, descripcion);
+            this.gasto = gasto;
+            this.descripcion = descripcion;
+        } 
+    }
+
+    class GastadoTransporte extends DineroGastado{
+        constructor (gasto, descripcion){
+            super(gasto, descripcion);
+            this.gasto = gasto;
+            this.descripcion = descripcion;
+        } 
+    }
+
+    class GastadoLujos extends DineroGastado{
+        constructor (gasto, descripcion){
+            super(gasto, descripcion);
+            this.gasto = gasto;
+            this.descripcion = descripcion;
+        } 
+    }
+
 
     function addGasto(){
         if(descripcion.value === "" || gasto.value === ""){
@@ -24,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function(){
             <td> <button class="btn btn-danger ml-1 removeBtn">
                 <i class="fa fa-trash"></i> </td> 
             `
+            let gastoNuevo = new GastadoFijos();   
         } else if(categoria.value === '2'){
             const rowComida = tableComida.insertRow();
             rowComida.innerHTML = `
@@ -32,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function(){
             <td> <button class="btn btn-danger ml-1 removeBtn">
                 <i class="fa fa-trash"></i> </td> 
             `
+            let gastoNuevo = new GastadoComida();
         }else if(categoria.value === '3'){
             const rowTransporte = tableTransporte.insertRow();
             rowTransporte.innerHTML = `
@@ -40,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function(){
             <td> <button class="btn btn-danger ml-1 removeBtn">
                 <i class="fa fa-trash"></i> </td> 
             `
+            let gastoNuevo = new GastadoTransporte();
         }else{
 
             const rowLujos = tableLujos.insertRow();
@@ -49,17 +94,16 @@ document.addEventListener('DOMContentLoaded', function(){
             <td> <button class="btn btn-danger ml-1 removeBtn">
                 <i class="fa fa-trash"></i> </td> 
             `
+            let gastoNuevo = new GastadoLujos();
+            console.log(gastoNuevo);
+
         }
 
     }
 
 
-    function removeGasto(){
-        
-
-    }
-
-
+    
+    
     addBtn.onclick = addGasto;
     
    
